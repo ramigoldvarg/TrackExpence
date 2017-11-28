@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import AllExpencesReducer from './reducer_expences.js';
+import ExpencesByMonthReducer from './reducer_expences_by_month.js';
 
 const rootReducer = combineReducers({
-    expences: AllExpencesReducer
+    expencesByMonth: ExpencesByMonthReducer
 });
 
 export default rootReducer;

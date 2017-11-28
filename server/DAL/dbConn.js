@@ -21,8 +21,6 @@ dbConn.prototype.addNewObject = function(objectToAdd, callback) {
 }
 
 dbConn.prototype.getAll= function(callback) {
-    console.log(this.URL);
-    console.log(this.collection);
     mongo.connect(this.URL, (err, db) => {
         if (err) {
             throw err;
