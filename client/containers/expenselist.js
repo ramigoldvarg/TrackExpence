@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Expense from '../containers/expense.js';
-// import { connect } from 'react-redux';
+import { connect } from 'react-redux';
 
 class ExpenseList extends Component {
     constructor(props) {
@@ -8,6 +8,10 @@ class ExpenseList extends Component {
     }
 
     render() {
+        if (!this.props.chosenMonth) {
+            return <h3> תבחר מועד התחזרות </h3>
+        }
+
         if (this.props.expences.length == 0) {
             return <h3> אין הוצאות!</h3>;
         }
@@ -24,9 +28,15 @@ class ExpenseList extends Component {
     }
 }
 
-// function mapStateToProps(state) {
-//     if ()
-// }
+function mapStateToProps(state) {
+    if (state.chosenMonth) {
+        return {
+            chosenMonth: state.chosenMonth,
+            expences: state.expencesByMonth[state.chosenMonth]
+        };
+    }
 
-// export default connect()(ExpenseList);
-export default ExpenseList;
+    return { chosenMonth: state.chosenMonth }
+}
+
+export default connect(mapStateToProps)(ExpenseList);

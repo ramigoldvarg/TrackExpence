@@ -3,6 +3,7 @@ import axios from 'axios';
 export const ADDED_EXPENCE = 'ADDED_EXPENCE';
 export const FETCH_EXPENCES = 'FETCH_EXPENCES';
 export const REMOVED_EXPENCE = 'REMOVED_EXPENCE';
+export const CHOSEN_MONTH = 'CHOSEN_MONTH';
 
 export function getAllExpences() {
     const request = axios.get('/expences');
@@ -29,4 +30,11 @@ export function addExpence(expence) {
         type: ADDED_EXPENCE,
         payload: request 
     });
-} 
+}
+
+export function choseMonth(chosenMonth) {
+    return ({
+        type: CHOSEN_MONTH,
+        payload: chosenMonth
+    })
+}

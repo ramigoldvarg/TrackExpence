@@ -1,10 +1,14 @@
 var models = require('express').Router();
 var expenceDAL = require('../../DAL/expencesDAL.js');
 
-models.get('/', (req, res) => {    
-    expenceDAL.getAll((data) => {
-        res.status(200).json(data);
-    });
+models.get('/', (req, res) => {
+    try {    
+        expenceDAL.getAll((data) => {
+            res.status(200).json(data);
+        });
+    } catch (err) {
+        res.status(400).json({message: 'something went wrong'});
+    }
 });
 
 models.post('/', (req, res) => {
